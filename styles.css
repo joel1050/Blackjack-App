@@ -3,6 +3,30 @@ body
   background-image: url(mat.jpg);
 }
 
+button{
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:active {
+  transform: translateY(4px);
+}
+
+.js-play:hover{
+  transform: scale(1.2);
+}
+
+.js-stand:hover{
+  transform: scale3d(1.1);
+  background-color: lightcoral;
+}
+
+
+.js-hit:hover{
+  transform: scale3d(1.1);
+  background-color: lightcoral;
+}
+
 #main
 {
   display: flex;
@@ -69,7 +93,7 @@ h1{
 {
   padding-top: 100px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .card{
@@ -103,6 +127,12 @@ h1{
   border: 5px dotted black;
   font-weight: bold;
   font-size: 20px;  
+  text-shadow: 0px 0px 4px black;
+}
+
+.chip:hover
+{
+  transform: scale(1.1)
 }
 
 /* Text element at the top right */
@@ -128,3 +158,23 @@ h1{
   font-size: 30px;;
 }
 
+#bet
+{
+  text-align: center;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+#reset
+{
+  background-color: lightgray;
+  height: 20px;
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  margin-top: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 2px 2px 2px black;
+
+}

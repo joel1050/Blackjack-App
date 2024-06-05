@@ -30,13 +30,14 @@
     <button class="js-play">Deal</button>
     <button class = "js-stand">Stand</button>
   </div>
-
+  <div id="bet">Bet: </div>
   <div id="chips">
-    <button class="chip">100</button>
-    <button class="chip">250</button>
-    <button class="chip">500</button>
-    <button class="chip">1000</button>
-    <button class="chip">2500</button>
+    <button class="chip" style="background-color: brown;" onclick="addbet(100)">100</button>
+    <button class="chip" style="background-color: green;" onclick="addbet(250)">250</button>
+    <button class="chip" style="background-color: blue;" onclick="addbet(500)">500</button>
+    <button class="chip" style="background-color: orange;" onclick="addbet(1000)"> 1000</button>
+    <button class="chip" style="background-color: black; border: 5px dotted white" onclick="addbet(2500)"> 2500</button>
+    <buttton id="reset" onclick = "resetBet()">Reset</buttton>
   </div>
 
   <!-- Text element at the top right -->

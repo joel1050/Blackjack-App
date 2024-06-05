@@ -1,5 +1,9 @@
 var deck = generateDeck();
 console.log(deck);
+
+var bet = 0;
+var balance = 5000;
+
 let playersCount = 0;
 let dealersCount = 0;
 
@@ -146,4 +150,26 @@ function generateDeck()// created deck with 52 cards with their values
     deck.push(10);
   }
   return deck;
+}
+
+function addbet(amt) {
+  if (balance > amt) {
+    bet += amt;
+    document.getElementById('bet').innerHTML = `Bet: ${bet}`;
+    balance -= amt;
+    document.getElementById('balance').innerHTML = `Balance: $${balance}`;
+  } else {
+    document.getElementById('bet').innerHTML = `Bet: Insufficient Balance`;
+    balance += bet;
+    document.getElementById('balance').innerHTML = `Balance: $${balance}`;
+    bet = 0;
+  }
+}
+
+function resetBet()
+{
+  balance = balance + bet;
+  bet = 0;
+  document.getElementById('bet').innerHTML = `Bet: ${bet}`;
+  document.getElementById('balance').innerHTML = `Balance: $${balance}`;
 }
