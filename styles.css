@@ -21,7 +21,7 @@ h1{
   margin-top: -20px;
   box-shadow: 0px 0px 50px black;
   border-radius: 200px;
-  height: 300px;
+  height: 270px;
   color: whitesmoke;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
@@ -32,7 +32,8 @@ h1{
 
 #playerdiv
 {
-  margin-top: 10px;
+  margin-top: 5px;
+  height: 300px;
 }
 
 .play-button
@@ -79,4 +80,33 @@ h1{
   border-radius: 20px;
   box-shadow: 4px 4px 2px black;
   font-size: 40px;
+}
+
+#chips {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+/* Text element at the top right */
+#balance {
+  position: absolute;
+  top: 20px; 
+  right: 20px; 
+  font-size: 18px; 
+  color: white; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#mid-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px; /* Adjust height as needed */
+}
+
+#mid-text {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white; 
+  font-size: 30px;;
 }

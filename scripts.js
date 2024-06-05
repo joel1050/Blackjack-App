@@ -16,8 +16,24 @@ let dealersCount = 0;
 
 let playerAlive = true;
 
-dealerArea = document.querySelector('.dcards').innerHTML;
-playerArea = document.querySelector('.pcards').innerHTML;// init html of cards to be rendered
+let dealerArea = document.querySelector('.dcards').innerHTML;
+let playerArea = document.querySelector('.pcards').innerHTML;// init html of cards to be rendered
+
+
+document.querySelector('.js-play').addEventListener("click", playGame);
+
+function endGame() {
+  document.querySelector('.dcards').innerHTML = '';
+  document.querySelector('.pcards').innerHTML = '';
+  document.querySelector('.js-play').addEventListener("click", playGame);
+  playerAlive = false;
+  document.querySelector('.js-hit').removeEventListener("click", hitHandler);
+  document.querySelector('.js-stand').removeEventListener("click", standHandler);
+  playersCount = 0;
+  dealersCount = 0;
+  document.getElementById('dealer-count').innerHTML = `Dealer: ${dealersCount}`;
+  document.getElementById('player-count').innerHTML = `Player: ${playersCount}`;
+}
 
 function renderCard(num)
 {
@@ -25,6 +41,8 @@ function renderCard(num)
 }
 
 function playGame() {
+  document.querySelector('.js-play').removeEventListener("click", playGame);
+  document.getElementById('mid-text').textContent = '';
   setTimeout(() => {
     dealerscard = randomCard(); // pulls random card
     document.querySelector('.dcards').innerHTML += renderCard(dealerscard);
@@ -47,8 +65,8 @@ function playGame() {
     document.querySelector('.pcards').innerHTML += renderCard(additionalCard);
     playersCount += additionalCard;
     document.getElementById('player-count').innerHTML = `Player: ${playersCount}`;
+    document.getElementById('mid-text').textContent = `Hit or Stand?`;
   }, 2400);
-
   // Initialize player game and set up event listeners
   playerGame(playersCount);
 }
@@ -59,7 +77,7 @@ function playerGame(playersCount) {
     document.querySelector('.js-stand').addEventListener("click", standHandler);
   } else {
     console.log('count: busted');
-    endGame();
+    setTimeout(endGame,400);
     return playersCount;
   }
   return null;
@@ -78,30 +96,27 @@ function hitHandler() {
     // Update the player display if needed
   } else {
     console.log('count: busted');
-    document.getElementById('player-count').innerHTML = `Player: BUSTED`;
-    setTimeout(()=>alert("You have busted."),400);
+    document.getElementById('player-count').innerHTML = `Player: ${playersCount}`;
+    document.getElementById('mid-text').textContent = 'Player Busts. You lose.';
+    setTimeout(endGame,400);
     //window.location.reload();
   }
 }
 
 function standHandler() {
-  document.getElementById('player-count').innerHTML = `Player Stands on ${playersCount}`;
+  document.getElementById('mid-text').textContent = '';
+  document.getElementById('player-count').innerHTML = `Player: ${playersCount}`;
+  document.getElementById('mid-text').textContent = `Player: Stands on ${playersCount}`;
   setTimeout(()=>{dealersGame(playersCount);},500);
 }
 
-function endGame() {
-  playerAlive = false;
-  document.querySelector('.js-hit').removeEventListener("click", hitHandler);
-  document.querySelector('.js-stand').removeEventListener("click", standHandler);
-  console.log("Game Over!");
-}
+
 
 async function dealersGame(playersCount) {
   // Helper function to add delay
   function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
   while (dealersCount < 17) {
     let dcard = randomCard();
     console.log('New card for Dealer: ' + dcard);
@@ -112,18 +127,22 @@ async function dealersGame(playersCount) {
     await delay(1000); // Wait for 300ms before drawing the next card
   }
   if (dealersCount > 21) {
-    document.getElementById('dealer-count').innerHTML = `Dealer: BUSTED`;
-    alert("Dealer busts, You Win!!!");
+    document.getElementById('dealer-count').innerHTML = `Dealer: ${dealersCount}`;
+    document.getElementById('mid-text').textContent = `Dealer Busts. You Win!`;
+    setTimeout(endGame,400);
     //window.location.reload();
   } else {
     if ((21 - playersCount) === (21 - dealersCount)) {
-      alert("Push.");
+      document.getElementById('mid-text').textContent = `Push.`;
+      setTimeout(endGame,400);
       //window.location.reload();
     } else if ((21 - playersCount) > (21 - dealersCount)) {
-      alert("Dealer Wins. You Lose.");
+      document.getElementById('mid-text').textContent = `You Win!`;
+      setTimeout(endGame,400);
       //window.location.reload();
     } else {
-      alert("You Win!!!");
+      document.getElementById('mid-text').textContent = `You Lose.`;
+      setTimeout(endGame,400);
       //window.location.reload();
     }
   }

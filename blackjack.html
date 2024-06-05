@@ -13,7 +13,11 @@
       <div class = "cards dcards">
       </div>
     </div>
-
+    <div id="mid-text-container">
+      <span id="mid-text">
+        Welcome to Blackjack!
+      </span>
+    </div>
     <div class='divs' id="playerdiv">
       <span id="player-count">Player:</span>
       <div class="cards pcards">
@@ -23,12 +27,20 @@
 
   <div class="play-button">
     <button class = "js-hit">Hit</button>
-    <button onclick="setTimeout(()=> {
-      document.querySelector('.js-play').style.display = 'none';playGame();
-      },300);" 
-      class="js-play">Deal</button>
+    <button class="js-play">Deal</button>
     <button class = "js-stand">Stand</button>
   </div>
+
+  <div id="chips">
+    <button>100</button>
+    <button>250</button>
+    <button>500</button>
+    <button>1000</button>
+    <button>2500</button>
+  </div>
+
+  <!-- Text element at the top right -->
+  <div id="balance">Balance: $5000</div>
 
 <script src="scripts.js">
 </script>
