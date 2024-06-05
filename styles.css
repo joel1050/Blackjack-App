@@ -2,10 +2,12 @@ body
 {
   background-image: url(mat.jpg);
 }
+
 #main
 {
   display: flex;
 }
+
 h1{
   margin-top: -12px;
   font-family: Arial, Helvetica, sans-serif;
@@ -85,7 +87,22 @@ h1{
 #chips {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Adjust margin as needed */
+  margin-top: 20px; 
+  margin-right: 20px;
+  height: 100px;
+}
+
+.chip
+{
+  background-color: brown;
+  color: white;
+  height: 70px;
+  width: 70px;
+  margin: 10px;
+  border-radius: 100px;
+  border: 5px dotted black;
+  font-weight: bold;
+  font-size: 20px;  
 }
 
 /* Text element at the top right */
@@ -110,3 +127,4 @@ h1{
   color: white; 
   font-size: 30px;;
 }
+
