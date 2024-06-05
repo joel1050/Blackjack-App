@@ -4,6 +4,8 @@ console.log(deck);
 var bet = 0;
 var balance = 5000;
 
+updateBet();
+updateBalance();
 let playersCount = 0;
 let dealersCount = 0;
 
@@ -14,7 +16,10 @@ let playerArea = document.querySelector('.pcards').innerHTML;// init html of car
 
 document.querySelector('.js-play').addEventListener("click", playGame);//adds eventlistener to deal button
 
+
+
 function playGame() {
+  document.getElementById('bet').innerHTML = `Bets Closed`;
   document.querySelector('.js-play').removeEventListener("click", playGame);
   document.getElementById('mid-text').textContent = '';
   setTimeout(() => {//deals 1st dealer card
@@ -31,7 +36,6 @@ function playGame() {
     document.getElementById('player-count').innerHTML = `Player: ${playerscard}`;
   }, 1600);
 
-  
   setTimeout(() => {// Deal one more card to the player
     let additionalCard = randomCard();
     document.querySelector('.pcards').innerHTML += renderCard(additionalCard);
@@ -89,19 +93,28 @@ async function dealersGame(playersCount) {
   }
   if (dealersCount > 21) {//checks for bust
     document.getElementById('dealer-count').innerHTML = `Dealer: ${dealersCount}`;
-    document.getElementById('mid-text').textContent = `Dealer Busts. You Win!`;
+    document.getElementById('mid-text').textContent = `Dealer Busts. You Win! (+ ${bet})`;
+    balance += bet * 2;
+    updateBalance();
+    bet = 0;
     setTimeout(endGame,2000);
   } else {
     if ((21 - playersCount) === (21 - dealersCount)) {//checks for push
-      document.getElementById('mid-text').textContent = `Push.`;
+      document.getElementById('mid-text').textContent = `Push. (+ 0)`;
+      balance += bet;
+      updateBalance();
+      bet = 0;
       setTimeout(endGame,2000);
 
-    } else if ((21 - playersCount) > (21 - dealersCount)) {//checks for player win
-      document.getElementById('mid-text').textContent = `You Lose!`;
+    } else if ((21 - playersCount) > (21 - dealersCount)) {//checks for player loss
+      document.getElementById('mid-text').textContent = `You Lose!`
       setTimeout(endGame,2000);
 
     } else {//checks for player win
-      document.getElementById('mid-text').textContent = `You Win.`;
+      document.getElementById('mid-text').textContent = `You Win. (+ ${bet})`;
+      balance += bet * 2;
+      updateBalance();
+      bet = 0;
       setTimeout(endGame,2000);
     }
   }
@@ -131,6 +144,7 @@ function endGame() {//instructions for ending game and resetting so that deal ca
   document.getElementById('player-count').innerHTML = `Player: ${playersCount}`;
   //resets counters
   deck = generateDeck();//makes new deck
+  resetBet();
 }
 
 function renderCard(num)//generates html of card
@@ -155,13 +169,13 @@ function generateDeck()// created deck with 52 cards with their values
 function addbet(amt) {
   if (balance > amt) {
     bet += amt;
-    document.getElementById('bet').innerHTML = `Bet: ${bet}`;
+    updateBet();
     balance -= amt;
     document.getElementById('balance').innerHTML = `Balance: $${balance}`;
   } else {
     document.getElementById('bet').innerHTML = `Bet: Insufficient Balance`;
     balance += bet;
-    document.getElementById('balance').innerHTML = `Balance: $${balance}`;
+    updateBalance();
     bet = 0;
   }
 }
@@ -170,6 +184,23 @@ function resetBet()
 {
   balance = balance + bet;
   bet = 0;
-  document.getElementById('bet').innerHTML = `Bet: ${bet}`;
+  updateBet();
+  updateBalance();
+}
+
+function updateBet(amt)
+{
+  if (amt)
+  {
+    document.getElementById('bet').innerHTML = `Bet: ${amt}`;
+  }
+  else
+  {
+    document.getElementById('bet').innerHTML = `Bet: ${bet}`;
+  }
+}
+
+function updateBalance()
+{
   document.getElementById('balance').innerHTML = `Balance: $${balance}`;
 }

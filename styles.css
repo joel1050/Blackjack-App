@@ -21,10 +21,14 @@ button:active {
   background-color: lightcoral;
 }
 
+.js-stand:active{
+  transform: scale3d(1.1);
+  background-color: lightcoral;
+}
 
 .js-hit:hover{
   transform: scale3d(1.1);
-  background-color: lightcoral;
+  background-color: rgb(28, 223, 10);
 }
 
 #main
@@ -47,7 +51,7 @@ h1{
   margin-top: -20px;
   box-shadow: 0px 0px 50px black;
   border-radius: 200px;
-  height: 270px;
+  height: 265px;
   color: whitesmoke;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
@@ -59,7 +63,6 @@ h1{
 #playerdiv
 {
   margin-top: 5px;
-  height: 300px;
 }
 
 .play-button
@@ -84,34 +87,35 @@ h1{
 }
 .js-hit,.js-stand
 {
-  background-color: #42f566;
-  border: 5px dotted greenyellow;
+  background-color: yellow;
+  border: 5px dotted darkgreen;
   width: 200px;
-  height: 80px;
+  height: 60px;
 }
 .cards
 {
   padding-top: 100px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .card{
   padding-top: 40px;
   border: 2px solid black;
-  height: 75px;
-  width: 70px;  
+  height: 95px;
+  width: 90px;  
   background-color: #F0EAD6 ;
   color: red;
   border-radius: 20px;
   box-shadow: 4px 4px 2px black;
   font-size: 40px;
+  margin: 0px -200px;
 }
 
 #chips {
   display: flex;
   justify-content: center;
-  margin-top: 20px; 
+  margin-top: 0px; 
   margin-right: 20px;
   height: 100px;
 }
@@ -160,6 +164,7 @@ h1{
 
 #bet
 {
+  margin-top: 5px;
   text-align: center;
   font-size: 25px;
   font-family: Arial, Helvetica, sans-serif;
