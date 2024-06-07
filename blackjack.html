@@ -32,16 +32,22 @@
   </div>
   <div id="bet">Bet: </div>
   <div id="chips">
-    <button class="chip" style="background-color: brown;" onclick="addbet(100)">100</button>
-    <button class="chip" style="background-color: green;" onclick="addbet(250)">250</button>
-    <button class="chip" style="background-color: blue;" onclick="addbet(500)">500</button>
-    <button class="chip" style="background-color: orange;" onclick="addbet(1000)"> 1000</button>
-    <button class="chip" style="background-color: black; border: 5px dotted white" onclick="addbet(2500)"> 2500</button>
+    <button class="chip" style="background-color: brown;" onclick="addbet(100); chips.play();">100</button>
+    <button class="chip" style="background-color: green;" onclick="addbet(250); chips.play();">250</button>
+    <button class="chip" style="background-color: blue;" onclick="addbet(500); chips.play();">500</button>
+    <button class="chip" style="background-color: orange;" onclick="addbet(1000); chips.play();"> 1000</button>
+    <button class="chip" style="background-color: black; border: 5px dotted white" onclick="addbet(2500);chips.play();"> 2500</button>
     <buttton id="reset" onclick = "resetBet()">Reset</buttton>
   </div>
 
   <!-- Text element at the top right -->
   <div id="balance">Balance:</div>
+  <audio controls id="cardsound">
+    <source src="card.mp3" type="audio/mpeg">
+  </audio>
+  <audio controls id="chipsound">
+    <source src="chips.mp3" type="audio/mpeg">
+  </audio>
 
 <script src="scripts.js">
 </script>

@@ -110,6 +110,18 @@ h1{
   box-shadow: 4px 4px 2px black;
   font-size: 40px;
   margin: 0px -200px;
+  animation: slideDown 22s ease-in-out;
+}
+
+@keyframes slideFromTop {
+  from {
+    top: -150px; /* Start the card from above the container */
+    opacity: 0;
+  }
+  to {
+    top: 0; /* Final position within the container */
+    opacity: 1;
+  }
 }
 
 #chips {
@@ -183,3 +195,4 @@ h1{
   box-shadow: 2px 2px 2px black;
 
 }
+

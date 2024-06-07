@@ -1,3 +1,6 @@
+var audioElement = document.getElementById('cardsound');
+var chips = document.getElementById('chipsound');
+
 var deck = generateDeck();
 console.log(deck);
 
@@ -15,8 +18,6 @@ let dealerArea = document.querySelector('.dcards').innerHTML;
 let playerArea = document.querySelector('.pcards').innerHTML;// init html of cards to be rendered
 
 document.querySelector('.js-play').addEventListener("click", playGame);//adds eventlistener to deal button
-
-
 
 function playGame() {
   document.getElementById('bet').innerHTML = `Bets Closed`;
@@ -147,9 +148,10 @@ function endGame() {//instructions for ending game and resetting so that deal ca
   resetBet();
 }
 
-function renderCard(num)//generates html of card
-{
-  return `<div class = card>${num}</div>`;
+function renderCard(num) {
+  let cardHTML = `<div class="card">${num}</div>`;
+  audioElement.play();
+  return cardHTML;
 }
 
 function generateDeck()// created deck with 52 cards with their values
@@ -204,3 +206,4 @@ function updateBalance()
 {
   document.getElementById('balance').innerHTML = `Balance: $${balance}`;
 }
+
