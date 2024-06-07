@@ -184,7 +184,6 @@ function addbet(amt) {
 
 function resetBet()
 {
-  balance = balance + bet;
   bet = 0;
   updateBet();
   updateBalance();
