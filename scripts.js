@@ -205,4 +205,3 @@ function updateBalance()
 {
   document.getElementById('balance').innerHTML = `Balance: $${balance}`;
 }
-
